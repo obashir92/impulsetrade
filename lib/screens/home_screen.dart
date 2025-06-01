@@ -12,19 +12,27 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade200,
-        title: Text("My setups"),
+        backgroundColor: Colors.teal.shade200,
+        title: Text("My setups", style: TextStyle(fontSize: 20),),
         actions: [
-          Row(
-            children: [
-              Text("Add new setup"),
-              IconButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/createsetup');
-                  },
-                  icon: Icon(Icons.post_add_outlined)),
-            ],
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/createsetup');
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Row(
+                children: [
+                  Text("Add setup"),
+                  SizedBox(width: 5),
+                  Icon(
+                        Icons.post_add_outlined,
+                        color: Colors.black,)
+                ],
+              ),
+            ),
           )
         ],
       ),

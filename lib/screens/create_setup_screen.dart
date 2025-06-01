@@ -14,10 +14,31 @@ class _CreateSetupScreenState extends State<CreateSetupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade200,
-        title: Text("Create a setup"),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Row(
+                children: [
+                  Text("Save"),
+                  SizedBox(width: 5),
+                  Icon(
+                        Icons.check_circle_outline,
+                        color: Colors.black),
+                ],
+              ),
+            ),
+          )
+        ],
+        backgroundColor: Colors.teal.shade200,
+        title: Text("Create setup", style: TextStyle(fontSize: 20)),
       ),
+
       body: Column(
         children: [
           SizedBox(height: 20),
@@ -28,10 +49,12 @@ class _CreateSetupScreenState extends State<CreateSetupScreen> {
                 hintText: "Enter setup name",
                 hintStyle: TextStyle(color: Colors.grey),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade600),
+                  borderSide: BorderSide(
+                      width: 2,
+                      color: Colors.teal),
                 ),
               ),
             ),
@@ -53,10 +76,12 @@ class _CreateSetupScreenState extends State<CreateSetupScreen> {
                             hintText: "Criteria ${index + 1}",
                             hintStyle: TextStyle(color: Colors.grey),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey.shade400),
+                              borderSide: BorderSide(color: Colors.black),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey.shade600),
+                              borderSide: BorderSide(
+                                  width: 2,
+                                  color: Colors.teal),
                             ),
                           ),
                         ),
@@ -73,7 +98,8 @@ class _CreateSetupScreenState extends State<CreateSetupScreen> {
                           width: 55,
                           padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Colors.black.withAlpha(10),
+                            color: Colors.grey.shade200,
+                            border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Icon(Icons.delete, color: Colors.red.shade300),
@@ -88,16 +114,18 @@ class _CreateSetupScreenState extends State<CreateSetupScreen> {
 
           GestureDetector(
             onTap: () {
+              if (criteriaList.length < 7){
               setState(() {
                 criteriaList.add("");
               });
+              }
             },
             child: SafeArea(
               child: Container(
                 height: 55,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: Colors.teal.shade200,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 13),
