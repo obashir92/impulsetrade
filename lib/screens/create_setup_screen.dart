@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+
+class CreateSetupScreen extends StatefulWidget {
+  const CreateSetupScreen({super.key});
+
+  @override
+  State<CreateSetupScreen> createState() => _CreateSetupScreenState();
+}
+
+class _CreateSetupScreenState extends State<CreateSetupScreen> {
+  List<String> criteriaList = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.grey.shade200,
+        title: Text("Create a setup"),
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Enter setup name",
+                hintStyle: TextStyle(color: Colors.grey),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade400),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade600),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+
+          Expanded(
+            child: ListView.builder(
+              itemCount: criteriaList.length,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Criteria ${index + 1}",
+                            hintStyle: TextStyle(color: Colors.grey),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey.shade400),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey.shade600),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            criteriaList.removeAt(index);
+                          });
+                        },
+                        child: Container(
+                          height: 55,
+                          width: 55,
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withAlpha(10),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Icon(Icons.delete, color: Colors.red.shade300),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                criteriaList.add("");
+              });
+            },
+            child: SafeArea(
+              child: Container(
+                height: 55,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 13),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Add criteria"),
+                      Icon(Icons.add),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
