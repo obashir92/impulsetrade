@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "330180559764",
+    "project_id": "impulsetrade-75c44",
+    "storage_bucket": "impulsetrade-75c44.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330180559764:android:5f84c8dac41d999c9fc581",
+        "android_client_info": {
+          "package_name": "com.example.impulsetrade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOcbXKeM0iqzwOfnKlLqjwkWlvtUk1-nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
